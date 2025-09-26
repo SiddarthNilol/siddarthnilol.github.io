@@ -18,28 +18,16 @@ interface TimelineEvent {
 
 const timelineEvents: TimelineEvent[] = [
   {
-    id: "1",
-    title: "Bachelor of Technology in Civil Engineering",
-    organization: "Indian Institute of Technology Madras",
-    location: "Chennai, India",
-    period: "Aug 2018 - May 2022",
-    description: "Strong foundation in engineering with focus on ML and operations research",
-    highlights: ["GPA: 9.16/10", "Machine Learning", "Advanced Operations Research", "Linear Algebra"],
-    icon: GraduationCap,
-    color: "education",
-    type: "education"
-  },
-  {
-    id: "2",
-    title: "Data Science Intern",
-    organization: "Manifolds Lab",
-    location: "Portland, Oregon (Remote)",
-    period: "June 2021 - Aug 2021",
-    description: "Heart rate estimation using physiological time series from wrist-worn devices",
-    highlights: ["35% signal-to-noise improvement", "CNN regression model", "1.5 BPM MAE accuracy", "Activity classification integration"],
-    icon: Brain,
-    color: "internship",
-    type: "internship"
+    id: "4",
+    title: "Master of Science in Data Science",
+    organization: "New York University",
+    location: "New York, NY",
+    period: "Sept 2025 - May 2027",
+    description: "Advanced studies in Computer Vision, Deep Learning, and Time Series Analysis",
+    highlights: ["Computer Vision Research", "Deep Learning from Small Data", "Probabilistic Time Series Analysis", "Zero-shot Image Enhancement"],
+    icon: Rocket,
+    color: "current",
+    type: "current"
   },
   {
     id: "3",
@@ -54,16 +42,28 @@ const timelineEvents: TimelineEvent[] = [
     type: "work"
   },
   {
-    id: "4",
-    title: "Master of Science in Data Science",
-    organization: "New York University",
-    location: "New York, NY",
-    period: "Sept 2025 - May 2027",
-    description: "Advanced studies in Computer Vision, Deep Learning, and Time Series Analysis",
-    highlights: ["Computer Vision Research", "Deep Learning from Small Data", "Probabilistic Time Series Analysis", "Zero-shot Image Enhancement"],
-    icon: Rocket,
-    color: "current",
-    type: "current"
+    id: "2",
+    title: "Data Science Intern",
+    organization: "Manifolds Lab",
+    location: "Portland, Oregon (Remote)",
+    period: "June 2021 - Aug 2021",
+    description: "Heart rate estimation using physiological time series from wrist-worn devices",
+    highlights: ["35% signal-to-noise improvement", "CNN regression model", "1.5 BPM MAE accuracy", "Activity classification integration"],
+    icon: Brain,
+    color: "internship",
+    type: "internship"
+  },
+  {
+    id: "1",
+    title: "Bachelor of Technology in Civil Engineering",
+    organization: "Indian Institute of Technology Madras",
+    location: "Chennai, India",
+    period: "Aug 2018 - May 2022",
+    description: "Strong foundation in engineering with focus on ML and operations research",
+    highlights: ["GPA: 9.16/10", "Machine Learning", "Advanced Operations Research", "Linear Algebra"],
+    icon: GraduationCap,
+    color: "education",
+    type: "education"
   }
 ];
 
