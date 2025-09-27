@@ -31,7 +31,7 @@ const Hero = () => {
 
               {/* Subtitle */}
               <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in animation-delay-300">
-                Product Data Scientist • AI/ML Engineer • MS Data Science @ NYU
+                Data Science @ NYU || Honda Motors, Japan || IIT Madras 2022 || Gen AI Enthusiast || Interests in Autonomous Driving
               </p>
 
               {/* Career Journey Tags */}
@@ -60,37 +60,12 @@ const Hero = () => {
                   Explore My Journey
                   <ArrowDown className="ml-2 h-5 w-5" />
                 </Button>
-                <div className="flex gap-4">
-                  <Button 
-                    variant="outline" 
-                    size="lg"
-                    className="border-border hover:border-primary/50 bg-card/50 backdrop-blur-sm hover:bg-primary/10 transition-all duration-300"
-                    asChild
-                  >
-                    <a href="mailto:sk12590@nyu.edu">
-                      <Mail className="h-5 w-5 mr-2" />
-                      Contact
-                    </a>
-                  </Button>
-                  
-                  <Button 
-                    variant="outline" 
-                    size="lg"
-                    className="border-border hover:border-accent/50 bg-card/50 backdrop-blur-sm hover:bg-accent/10 transition-all duration-300"
-                    asChild
-                  >
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                      <Download className="h-5 w-5 mr-2" />
-                      Resume
-                    </a>
-                  </Button>
-                </div>
               </div>
 
               {/* Social Links */}
               <div className="flex justify-center lg:justify-start gap-6 animate-scale-in">
                 <a 
-                  href="#" 
+                  href="https://linkedin.com/in/siddarth-nilol-kundur-satish" 
                   className="p-3 rounded-full bg-card/50 backdrop-blur-sm border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 hover:scale-110"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -98,7 +73,7 @@ const Hero = () => {
                   <Linkedin className="h-6 w-6 text-primary" />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://github.com/siddarthsatish" 
                   className="p-3 rounded-full bg-card/50 backdrop-blur-sm border border-border hover:border-accent/50 hover:bg-accent/10 transition-all duration-300 hover:scale-110"
                   target="_blank"
                   rel="noopener noreferrer"
