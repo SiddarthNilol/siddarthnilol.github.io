@@ -3,47 +3,85 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, MapPin, Phone, Send, Linkedin, Github, CheckCircle } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
-
-const contactSchema = z.object({
-  firstName: z.string().min(1, "First name is required").max(50, "First name must be less than 50 characters"),
-  lastName: z.string().min(1, "Last name is required").max(50, "Last name must be less than 50 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  subject: z.string().min(1, "Subject is required").max(100, "Subject must be less than 100 characters"),
-  message: z.string().min(10, "Message must be at least 10 characters").max(1000, "Message must be less than 1000 characters"),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const { toast } = useToast();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    reset,
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
-  });
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
 
-  const onSubmit = async (data: ContactFormData) => {
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = "First name is required";
+    }
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = "Last name is required";
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    if (!formData.subject.trim()) {
+      newErrors.subject = "Subject is required";
+    }
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: "" }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    
     try {
       // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      console.log("Form submitted:", data);
+      console.log("Form submitted:", formData);
       setIsSubmitted(true);
       toast({
         title: "Message Sent!",
         description: "Thank you for your message. I'll get back to you soon!",
       });
-      reset();
+      
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
       
       // Reset success state after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
@@ -53,6 +91,8 @@ const Contact = () => {
         description: "Failed to send message. Please try again.",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -164,7 +204,7 @@ const Contact = () => {
             ) : (
               <>
                 <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="firstName" className="block text-sm font-medium mb-2">
@@ -172,12 +212,13 @@ const Contact = () => {
                       </label>
                       <Input 
                         id="firstName"
+                        value={formData.firstName}
+                        onChange={(e) => handleInputChange("firstName", e.target.value)}
                         placeholder="John"
                         className="bg-background/50 border-border focus:border-primary"
-                        {...register("firstName")}
                       />
                       {errors.firstName && (
-                        <p className="text-red-500 text-sm mt-1">{errors.firstName.message}</p>
+                        <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
                       )}
                     </div>
                     <div>
@@ -186,12 +227,13 @@ const Contact = () => {
                       </label>
                       <Input 
                         id="lastName"
+                        value={formData.lastName}
+                        onChange={(e) => handleInputChange("lastName", e.target.value)}
                         placeholder="Doe"
                         className="bg-background/50 border-border focus:border-primary"
-                        {...register("lastName")}
                       />
                       {errors.lastName && (
-                        <p className="text-red-500 text-sm mt-1">{errors.lastName.message}</p>
+                        <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
                       )}
                     </div>
                   </div>
@@ -203,12 +245,13 @@ const Contact = () => {
                     <Input 
                       id="email"
                       type="email"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange("email", e.target.value)}
                       placeholder="john.doe@example.com"
                       className="bg-background/50 border-border focus:border-primary"
-                      {...register("email")}
                     />
                     {errors.email && (
-                      <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                      <p className="text-red-500 text-sm mt-1">{errors.email}</p>
                     )}
                   </div>
 
@@ -218,12 +261,13 @@ const Contact = () => {
                     </label>
                     <Input 
                       id="subject"
+                      value={formData.subject}
+                      onChange={(e) => handleInputChange("subject", e.target.value)}
                       placeholder="Collaboration Opportunity"
                       className="bg-background/50 border-border focus:border-primary"
-                      {...register("subject")}
                     />
                     {errors.subject && (
-                      <p className="text-red-500 text-sm mt-1">{errors.subject.message}</p>
+                      <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
                     )}
                   </div>
 
@@ -233,13 +277,14 @@ const Contact = () => {
                     </label>
                     <Textarea 
                       id="message"
+                      value={formData.message}
+                      onChange={(e) => handleInputChange("message", e.target.value)}
                       placeholder="I'd love to discuss..."
                       rows={6}
                       className="bg-background/50 border-border focus:border-primary resize-none"
-                      {...register("message")}
                     />
                     {errors.message && (
-                      <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
+                      <p className="text-red-500 text-sm mt-1">{errors.message}</p>
                     )}
                   </div>
 
