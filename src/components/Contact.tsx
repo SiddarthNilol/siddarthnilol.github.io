@@ -1,9 +1,7 @@
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Mail, MapPin, Phone, Send, Linkedin, Github, CheckCircle } from "lucide-react";
-import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -47,6 +45,9 @@ const Contact = () => {
   };
 
   const handleInputChange = (field: string, value: string) => {
+    // Debug: log input changes to help verify events are firing in the browser
+    // Remove or comment out this line after debugging
+    console.log(`[Contact] input change`, field, value);
     setFormData(prev => ({ ...prev, [field]: value }));
     // Clear error when user starts typing
     if (errors[field]) {
@@ -54,8 +55,14 @@ const Contact = () => {
     }
   };
 
+  // Debug helper to confirm focus events
+  const handleInputFocus = (field: string) => {
+    console.log(`[Contact] input focus`, field);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+  console.log("[Contact] handleSubmit called", formData);
     
     if (!validateForm()) {
       return;
@@ -174,7 +181,7 @@ const Contact = () => {
               <h4 className="font-semibold mb-4">Connect Online</h4>
               <div className="flex space-x-4">
                 <a 
-                  href="https://linkedin.com/in/siddarth-nilol-kundur-satish" 
+                  href="https://www.linkedin.com/in/siddarth-nilol-k-s" 
                   className="p-3 rounded-full bg-card/50 backdrop-blur-sm border border-border hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 hover:scale-110"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -182,7 +189,7 @@ const Contact = () => {
                   <Linkedin className="h-6 w-6 text-primary" />
                 </a>
                 <a 
-                  href="https://github.com/siddarthsatish" 
+                  href="https://github.com/SiddarthNilol" 
                   className="p-3 rounded-full bg-card/50 backdrop-blur-sm border border-border hover:border-accent/50 hover:bg-accent/10 transition-all duration-300 hover:scale-110"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -210,12 +217,14 @@ const Contact = () => {
                       <label htmlFor="firstName" className="block text-sm font-medium mb-2">
                         First Name
                       </label>
-                      <Input 
+                      <input
                         id="firstName"
                         value={formData.firstName}
-                        onChange={(e) => handleInputChange("firstName", e.target.value)}
+                          onChange={(e) => handleInputChange("firstName", e.target.value)}
+                          onFocus={() => handleInputFocus("firstName")}
+                          onClick={() => console.log('[Contact] input click', 'firstName')}
                         placeholder="John"
-                        className="bg-background/50 border-border focus:border-primary"
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-background/50 border-border focus:border-primary"
                       />
                       {errors.firstName && (
                         <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
@@ -225,12 +234,14 @@ const Contact = () => {
                       <label htmlFor="lastName" className="block text-sm font-medium mb-2">
                         Last Name
                       </label>
-                      <Input 
+                      <input
                         id="lastName"
                         value={formData.lastName}
-                        onChange={(e) => handleInputChange("lastName", e.target.value)}
+                          onChange={(e) => handleInputChange("lastName", e.target.value)}
+                          onFocus={() => handleInputFocus("lastName")}
+                          onClick={() => console.log('[Contact] input click', 'lastName')}
                         placeholder="Doe"
-                        className="bg-background/50 border-border focus:border-primary"
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-background/50 border-border focus:border-primary"
                       />
                       {errors.lastName && (
                         <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
@@ -242,13 +253,15 @@ const Contact = () => {
                     <label htmlFor="email" className="block text-sm font-medium mb-2">
                       Email
                     </label>
-                    <Input 
+                    <input
                       id="email"
                       type="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange("email", e.target.value)}
+                      onFocus={() => handleInputFocus("email")}
+                      onClick={() => console.log('[Contact] input click', 'email')}
                       placeholder="john.doe@example.com"
-                      className="bg-background/50 border-border focus:border-primary"
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-background/50 border-border focus:border-primary"
                     />
                     {errors.email && (
                       <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -259,12 +272,14 @@ const Contact = () => {
                     <label htmlFor="subject" className="block text-sm font-medium mb-2">
                       Subject
                     </label>
-                    <Input 
+                    <input
                       id="subject"
                       value={formData.subject}
                       onChange={(e) => handleInputChange("subject", e.target.value)}
+                      onFocus={() => handleInputFocus("subject")}
+                      onClick={() => console.log('[Contact] input click', 'subject')}
                       placeholder="Collaboration Opportunity"
-                      className="bg-background/50 border-border focus:border-primary"
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-background/50 border-border focus:border-primary"
                     />
                     {errors.subject && (
                       <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
@@ -275,13 +290,15 @@ const Contact = () => {
                     <label htmlFor="message" className="block text-sm font-medium mb-2">
                       Message
                     </label>
-                    <Textarea 
+                    <textarea
                       id="message"
                       value={formData.message}
                       onChange={(e) => handleInputChange("message", e.target.value)}
+                      onFocus={() => handleInputFocus("message")}
+                      onClick={() => console.log('[Contact] input click', 'message')}
                       placeholder="I'd love to discuss..."
                       rows={6}
-                      className="bg-background/50 border-border focus:border-primary resize-none"
+                      className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-background/50 border-border focus:border-primary resize-none"
                     />
                     {errors.message && (
                       <p className="text-red-500 text-sm mt-1">{errors.message}</p>
