@@ -60,9 +60,11 @@ const Contact = () => {
     console.log(`[Contact] input focus`, field);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-  console.log("[Contact] handleSubmit called", formData);
+  const handleSubmit = async (e?: React.FormEvent) => {
+    if (e && typeof ((e as unknown) as Event).preventDefault === "function") {
+      e.preventDefault();
+    }
+    console.log("[Contact] handleSubmit called", formData);
     
     if (!validateForm()) {
       return;
@@ -71,28 +73,44 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      console.log("Form submitted:", formData);
+      // Send via FormSubmit AJAX endpoint. This will email to sk12590@nyu.edu.
+      // Note: FormSubmit requires verifying the recipient email once (check inbox for confirmation).
+      const payload = {
+        name: `${formData.firstName} ${formData.lastName}`.trim(),
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        _replyto: formData.email,
+        _subject: formData.subject || `Website message from ${formData.email}`,
+      };
+
+      const resp = await fetch("https://formsubmit.co/ajax/sk12590@nyu.edu", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!resp.ok) {
+        const text = await resp.text();
+        console.error("Form submit failed", resp.status, text);
+        throw new Error("Failed to send message");
+      }
+
+      const json = await resp.json();
+      console.log("Form submitted (server):", json);
       setIsSubmitted(true);
       toast({
         title: "Message Sent!",
         description: "Thank you for your message. I'll get back to you soon!",
       });
-      
+
       // Reset form
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        subject: "",
-        message: ""
-      });
-      
+      setFormData({ firstName: "", lastName: "", email: "", subject: "", message: "" });
+
       // Reset success state after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (error) {
+      console.error(error);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
@@ -224,7 +242,7 @@ const Contact = () => {
                           onFocus={() => handleInputFocus("firstName")}
                           onClick={() => console.log('[Contact] input click', 'firstName')}
                         placeholder="John"
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-background/50 border-border focus:border-primary"
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-background/50 border-border focus:border-primary relative z-50"
                       />
                       {errors.firstName && (
                         <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
@@ -241,7 +259,7 @@ const Contact = () => {
                           onFocus={() => handleInputFocus("lastName")}
                           onClick={() => console.log('[Contact] input click', 'lastName')}
                         placeholder="Doe"
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-background/50 border-border focus:border-primary"
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-background/50 border-border focus:border-primary relative z-50"
                       />
                       {errors.lastName && (
                         <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
@@ -261,7 +279,7 @@ const Contact = () => {
                       onFocus={() => handleInputFocus("email")}
                       onClick={() => console.log('[Contact] input click', 'email')}
                       placeholder="john.doe@example.com"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-background/50 border-border focus:border-primary"
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-background/50 border-border focus:border-primary relative z-50"
                     />
                     {errors.email && (
                       <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -279,7 +297,7 @@ const Contact = () => {
                       onFocus={() => handleInputFocus("subject")}
                       onClick={() => console.log('[Contact] input click', 'subject')}
                       placeholder="Collaboration Opportunity"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-background/50 border-border focus:border-primary"
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-background/50 border-border focus:border-primary relative z-50"
                     />
                     {errors.subject && (
                       <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
@@ -298,7 +316,7 @@ const Contact = () => {
                       onClick={() => console.log('[Contact] input click', 'message')}
                       placeholder="I'd love to discuss..."
                       rows={6}
-                      className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-background/50 border-border focus:border-primary resize-none"
+                      className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-background/50 border-border focus:border-primary resize-none relative z-50"
                     />
                     {errors.message && (
                       <p className="text-red-500 text-sm mt-1">{errors.message}</p>
@@ -308,8 +326,12 @@ const Contact = () => {
                   <Button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow hover:shadow-xl transition-all duration-300 disabled:opacity-50"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow hover:shadow-xl transition-all duration-300 disabled:opacity-50 relative z-50 cursor-pointer pointer-events-auto"
                     size="lg"
+                    onClick={() => {
+                      console.log('[Contact] button onClick');
+                      void handleSubmit();
+                    }}
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
                     <Send className="ml-2 h-5 w-5" />
