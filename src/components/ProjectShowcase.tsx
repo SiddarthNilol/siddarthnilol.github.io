@@ -170,7 +170,7 @@ const ProjectShowcase = () => {
                 </div>
 
                 {/* Actions */}
-                <div className="flex gap-2 pt-4 border-t border-border/50">
+                {/* <div className="flex gap-2 pt-4 border-t border-border/50">
                   <Button 
                     variant="outline" 
                     size="sm" 
@@ -188,7 +188,7 @@ const ProjectShowcase = () => {
                       <Github className="h-4 w-4" />
                     </Button>
                   )}
-                </div>
+                </div> */}
               </div>
             </Card>
           ))}
