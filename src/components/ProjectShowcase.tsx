@@ -195,7 +195,7 @@ const ProjectShowcase = () => {
         </div>
 
         {/* View All Projects CTA */}
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <Button 
             size="lg"
             variant="outline"
@@ -204,7 +204,7 @@ const ProjectShowcase = () => {
             View All Projects
             <ExternalLink className="ml-2 h-5 w-5" />
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
