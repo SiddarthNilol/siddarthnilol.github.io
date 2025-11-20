@@ -71,10 +71,10 @@ const VisitorMap: React.FC = () => {
   }
 
   return (
-    <div className="visitor-map">
+    <div className="visitor-map w-full max-w-3xl mx-auto">
       <div className="mb-2 text-sm text-muted-foreground">Visitors: {visitors.length}</div>
       {error && <div className="text-sm text-destructive mb-2">{error}</div>}
-      <ComposableMap projectionConfig={{ scale: 145 }} width={980} height={520}>
+      <ComposableMap projectionConfig={{ scale: 120 }} width={720} height={420}>
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
             geographies.map((geo) => (
@@ -85,10 +85,10 @@ const VisitorMap: React.FC = () => {
 
         {visitors.map((v, i) => (
           <Marker key={`${v.lat}-${v.lon}-${i}`} coordinates={[v.lon, v.lat]}>
-            <g transform="translate(-8, -8)">
-              <circle r={6} fill="#ff5252" stroke="#fff" strokeWidth={1} />
+            <g transform="translate(-6, -6)">
+              <circle r={5} fill="#ff5252" stroke="#fff" strokeWidth={1} />
             </g>
-            <text textAnchor="middle" y={20} style={{ fontFamily: "system-ui", fill: "#333", fontSize: 11 }}>
+            <text textAnchor="middle" y={18} style={{ fontFamily: "system-ui", fill: "#333", fontSize: 11 }}>
               {v.country ?? v.city}
             </text>
           </Marker>
