@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Eye } from "lucide-react";
+import { ExternalLink, Github, Eye } from "@/lib/icons";
 
 interface Project {
   id: string;

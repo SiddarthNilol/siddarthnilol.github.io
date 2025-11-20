@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Download, Github, Linkedin, Mail } from "@/lib/icons";
 import profilePhoto from "@/assets/profile-photo.png";
 
 const Hero = () => {
