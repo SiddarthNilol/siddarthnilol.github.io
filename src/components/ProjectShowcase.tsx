@@ -17,12 +17,12 @@ interface Project {
 const projects: Project[] = [
   {
     id: "1",
-    title: "Zero-shot Low-light Image Enhancement",
-    description: "Novel approaches to improve CV model robustness in challenging illumination environments",
-    longDescription: "Ongoing research at NYU under Prof. Saining Xie, exploring zero-shot techniques for enhancing images in low-light conditions while maintaining semantic segmentation accuracy.",
-    impact: "Advancing computer vision capabilities for autonomous systems",
-    technologies: ["PyTorch", "Computer Vision", "Zero-shot Learning", "Image Enhancement"],
-    category: "Research",
+    title: "Physics Aware Video Generation",
+    description: "Novel approache to improve standard Diffusion Transformer based video generation model's physics understanding.",
+    longDescription: "Ongoing research at NYU under Prof. Saining Xie as part of Computer Vision course, exploring techniques for enhancing video generation models to better grasp physical dynamics in generated content.",
+    impact: "Advacing video generation realism and applicability in dynamic scenarios",
+    technologies: ["PyTorch", "Computer Vision", "World Models", "Diffusion Transformers"],
+    category: "Computer Vision",
     status: "ongoing"
   },
   {
@@ -47,26 +47,26 @@ const projects: Project[] = [
   },
   {
     id: "4",
-    title: "Multi-Agent Graph RAG System",
-    description: "Internal knowledge retrieval chatbot with specialized agent architecture",
-    longDescription: "Engineered multi-agent Graph-RAG system integrating Confluence APIs, Neo4j graph construction, and semantic information retrieval with specialized agents for ingestion, retrieval, synthesis, and compliance.",
-    impact: "Improved knowledge accessibility and collaboration across teams",
-    technologies: ["LangChain", "Neo4j", "Graph RAG", "Multi-Agent Systems", "NLP"],
-    category: "AI Systems",
+    title: "Cross-Platform Multimodal Social Listening Pipeline for Customer Experience Insights",
+    description: "Scalable system aggregating and analyzing customer feedback from diverse social media platforms",
+    longDescription: "Engineered sentiment analysis and topic modeling pipeline using Azure OpenAI API, enabling real-time insights from Twitter, Instagram, Blog Post data.",
+    impact: "Improved decision-making through timely customer feedback analysis",
+    technologies: ["LangChain", "LLMs", "NLP", "Azure OpenAI"],
+    category: "Gen AI Systems",
     status: "completed"
   },
+  // {
+  //   id: "5",
+  //   title: "Face Anonymization Pipeline",
+  //   description: "PyTorch-based automated face anonymization for automotive data",
+  //   longDescription: "Deployed production pipeline on AWS SageMaker for processing automotive video data while maintaining privacy compliance and data utility.",
+  //   impact: "75% reduction in outsourcing costs with maintained data quality",
+  //   technologies: ["PyTorch", "AWS SageMaker", "Computer Vision", "Privacy Tech"],
+  //   category: "Production ML",
+  //   status: "completed"
+  // },
   {
     id: "5",
-    title: "Face Anonymization Pipeline",
-    description: "PyTorch-based automated face anonymization for automotive data",
-    longDescription: "Deployed production pipeline on AWS SageMaker for processing automotive video data while maintaining privacy compliance and data utility.",
-    impact: "75% reduction in outsourcing costs with maintained data quality",
-    technologies: ["PyTorch", "AWS SageMaker", "Computer Vision", "Privacy Tech"],
-    category: "Production ML",
-    status: "completed"
-  },
-  {
-    id: "6",
     title: "COVID-19 Traffic Impact Analysis",
     description: "Causal analysis of lockdown policies on urban traffic patterns in Chennai",
     longDescription: "Processed 2M+ Wi-Fi sensor records to model traffic behavior across pre-, mid-, and post-lockdown phases using advanced statistical methods.",
