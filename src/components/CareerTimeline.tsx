@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { GraduationCap, Briefcase, Rocket, Brain } from "lucide-react";
+import { GraduationCap, Briefcase, Rocket, Brain } from "@/lib/icons";
 
 interface TimelineEvent {
   id: string;
@@ -24,7 +24,7 @@ const timelineEvents: TimelineEvent[] = [
     location: "New York, NY",
     period: "Sept 2025 - May 2027",
     description: "Advanced studies in Computer Vision, Deep Learning, and Time Series Analysis",
-    highlights: ["Computer Vision Research", "Deep Learning from Small Data", "Probabilistic Time Series Analysis", "Zero-shot Image Enhancement"],
+    highlights: ["Reinforcement Learning", "Computer Vision Research", "Deep Learning from Small Data", "Probabilistic Time Series Analysis"],
     icon: Rocket,
     color: "current",
     type: "current"
@@ -36,7 +36,7 @@ const timelineEvents: TimelineEvent[] = [
     location: "Tochigi, Japan",
     period: "July 2022 - July 2025",
     description: "Led AI/ML projects for automotive ADAS and market research",
-    highlights: ["75% cost reduction in face anonymization", "95% automation in geo-spatial querying", "Promoted to Product Owner", "Led team of 6 members", "N3 Japanese proficiency"],
+    highlights: ["Applied AI/ML techniques", "Data Analysis", "Promoted to Product Owner", "Spearheaded team of 6 members", "N3 Japanese proficiency"],
     icon: Briefcase,
     color: "work",
     type: "work"
@@ -48,7 +48,7 @@ const timelineEvents: TimelineEvent[] = [
     location: "Portland, Oregon (Remote)",
     period: "June 2021 - Aug 2021",
     description: "Heart rate estimation using physiological time series from wrist-worn devices",
-    highlights: ["35% signal-to-noise improvement", "CNN regression model", "1.5 BPM MAE accuracy", "Activity classification integration"],
+    highlights: ["CNN regression model", "Activity classification integration", "35% signal-to-noise improvement", "1.5 BPM MAE accuracy"],
     icon: Brain,
     color: "internship",
     type: "internship"
@@ -60,7 +60,7 @@ const timelineEvents: TimelineEvent[] = [
     location: "Chennai, India",
     period: "Aug 2018 - May 2022",
     description: "Strong foundation in engineering with focus on ML and operations research",
-    highlights: ["GPA: 9.16/10", "Machine Learning", "Advanced Operations Research", "Linear Algebra"],
+    highlights: ["GPA: 9.16/10", "Machine Learning", "Advanced Operations Research", "Linear Algebra", "Probability, Statistics and Stochastic Processes"],
     icon: GraduationCap,
     color: "education",
     type: "education"

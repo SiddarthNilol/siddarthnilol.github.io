@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Mail, MapPin, Phone, Send, Linkedin, Github, CheckCircle } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Linkedin, Github, CheckCircle } from "@/lib/icons";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
