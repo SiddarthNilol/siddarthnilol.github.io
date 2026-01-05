@@ -11,6 +11,7 @@ interface Project {
   impact: string;
   technologies: string[];
   category: string;
+  link: string;
   status: "completed" | "ongoing" | "research";
 }
 
@@ -18,12 +19,13 @@ const projects: Project[] = [
   {
     id: "1",
     title: "Physics Aware Video Generation",
-    description: "Novel approache to improve standard Diffusion Transformer based video generation model's physics understanding.",
-    longDescription: "Ongoing research at NYU under Prof. Saining Xie as part of Computer Vision course, exploring techniques for enhancing video generation models to better grasp physical dynamics in generated content.",
-    impact: "Advacing video generation realism and applicability in dynamic scenarios",
-    technologies: ["PyTorch", "Computer Vision", "World Models", "Diffusion Transformers"],
+    description: "Novel approach to improve standard Diffusion Transformer based video generation model's physics understanding.",
+    longDescription: "Course project at NYU under Prof. Saining Xie as part of Computer Vision course, exploring techniques for enhancing video generation models to better grasp physical dynamics in generated content.",
+    impact: "Advancing video generation realism and applicability in dynamic scenarios",
+    technologies: ["PyTorch", "Computer Vision", "World Models", "Diffusion Transformers", "Multi-GPU Training"],
     category: "Computer Vision",
-    status: "ongoing"
+    link: "https://github.com/CVFall2025-Project/PhysVideoGenerator",
+    status: "completed"
   },
   {
     id: "2", 
@@ -33,6 +35,7 @@ const projects: Project[] = [
     impact: "25% reduction in predicted accident rates through improved infrastructure strategies",
     technologies: ["PyTorch", "YOLOv8", "Bot-SORT", "Computer Vision", "Safety Analysis"],
     category: "Computer Vision",
+    link: "",
     status: "completed"
   },
   {
@@ -43,6 +46,7 @@ const projects: Project[] = [
     impact: "15% reduction in field validation time through prioritized scenario testing",
     technologies: ["XGBoost", "SHAP", "Streamlit", "Feature Engineering", "AWS"],
     category: "Machine Learning",
+    link: "",
     status: "completed"
   },
   {
@@ -53,6 +57,7 @@ const projects: Project[] = [
     impact: "Improved decision-making through timely customer feedback analysis",
     technologies: ["LangChain", "LLMs", "NLP", "Azure OpenAI"],
     category: "Gen AI Systems",
+    link: "",
     status: "completed"
   },
   // {
@@ -73,6 +78,7 @@ const projects: Project[] = [
     impact: "Insights into urban mobility patterns during crisis situations",
     technologies: ["R", "Causal Inference", "Time Series", "Statistical Modeling"],
     category: "Data Analysis",
+    link: "",
     status: "completed"
   }
 ];
@@ -167,6 +173,13 @@ const ProjectShowcase = () => {
                       </span>
                     )}
                   </div>
+                  {/* Project Link */}
+                  {project.link != "" && (
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
+                      <ExternalLink className="h-4 w-4 inline mr-2" />
+                      View Project
+                    </a>
+                  )}
                 </div>
 
                 {/* Actions */}
