@@ -1,73 +1,109 @@
-# Welcome to your Lovable project
+# Portfolio Website
 
-## Project info
+A modern, interactive portfolio website showcasing projects, career timeline, and visitor map tracking.
 
-**URL**: https://lovable.dev/projects/85699443-c983-45a0-91b7-4b26eec6ab53
+## Features
 
-## How can I edit this code?
+- **Hero Section**: Eye-catching introduction with call-to-action
+- **Career Timeline**: Visual representation of professional experience
+- **Project Showcase**: Highlight your best work with interactive cards
+- **Visitor Map**: Real-time visitor tracking with geolocation
+- **Contact Section**: Easy way for visitors to get in touch
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Error Handling**: Graceful error boundaries and fallback states
 
-There are several ways of editing your application.
+## Technology Stack
 
-**Use Lovable**
+- **Vite**: Fast build tool and dev server
+- **React 18**: UI library
+- **TypeScript**: Type-safe JavaScript
+- **Tailwind CSS**: Utility-first styling
+- **shadcn/ui**: High-quality component library
+- **react-simple-maps**: Interactive world map visualization
+- **Lucide React**: Icon library
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/85699443-c983-45a0-91b7-4b26eec6ab53) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js (v18 or higher)
+- npm or bun
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone <repository-url>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory
+cd siddarthnilol.github.io
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Development with API
 
-**Use GitHub Codespaces**
+To run with the visitor tracking API:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```sh
+npm run dev:full
+```
 
-## What technologies are used for this project?
+This runs both the Vite dev server and the API server concurrently.
 
-This project is built with:
+### Build for Production
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```sh
+npm run build
+```
 
-## How can I deploy this project?
+The optimized build will be generated in the `dist/` directory.
 
-Simply open [Lovable](https://lovable.dev/projects/85699443-c983-45a0-91b7-4b26eec6ab53) and click on Share -> Publish.
+## Project Structure
 
-## Can I connect a custom domain to my Lovable project?
+```
+src/
+├── components/          # React components
+│   ├── ui/             # shadcn/ui components
+│   ├── Hero.tsx        # Hero section
+│   ├── CareerTimeline.tsx
+│   ├── ProjectShowcase.tsx
+│   ├── VisitorMap.tsx
+│   ├── Contact.tsx
+│   └── ErrorBoundary.tsx
+├── pages/              # Page components
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions
+├── App.tsx             # Main app component
+└── main.tsx            # Entry point
+api/
+├── visitors.js         # Visitor tracking serverless function
+└── api-server.js       # Local API server for development
+```
 
-Yes, you can!
+## API Endpoints
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### GET /api/visitors
+Returns an array of the last 100 visitor records with geolocation data.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### POST /api/visitors
+Accepts visitor data in JSON format:
+```json
+{
+  "lat": 40.7128,
+  "lon": -74.0060,
+  "country": "United States",
+  "city": "New York",
+  "ts": "2026-01-19T10:30:00Z"
+}
+```
+
+## License
+
+This project is open source and available under the MIT License.
