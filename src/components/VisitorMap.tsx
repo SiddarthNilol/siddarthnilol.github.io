@@ -29,7 +29,8 @@ const VisitorMap: React.FC = () => {
   async function loadVisitors() {
     setLoading(true);
     try {
-      const res = await fetch("/api/visitors");
+      const apiUrl = process.env.NODE_ENV === "development" ? "/api/visitors" : "/api/visitors";
+      const res = await fetch(apiUrl);
       if (!res.ok) throw new Error("Failed to fetch visitors");
       const json = await res.json();
       setVisitors(json || []);

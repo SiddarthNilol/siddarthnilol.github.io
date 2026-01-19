@@ -8,10 +8,12 @@
   - Writing to a file in serverless environments may not persist across instances — use a DB for production (Firestore, Supabase, DynamoDB).
 */
 
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const DATA_PATH = path.join(process.cwd(), "data");
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const DATA_PATH = path.join(__dirname, "..", "data");
 const FILE = path.join(DATA_PATH, "visitors.json");
 
 function ensureDataDir() {
@@ -19,7 +21,17 @@ function ensureDataDir() {
   if (!fs.existsSync(FILE)) fs.writeFileSync(FILE, JSON.stringify([]));
 }
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    res.statusCode = 200;
+    res.end();
+    return;
+  }
+
   ensureDataDir();
   if (req.method === "GET") {
     const raw = fs.readFileSync(FILE, "utf8");
