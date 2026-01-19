@@ -29,6 +29,17 @@ const projects: Project[] = [
   },
   {
     id: "2", 
+    title: "Modeling Information Blackouts in MNAR Time Series Data",
+    description: "Latent Dynamic Models to handle Missing Not At Random (MNAR) time series data with information blackouts.",
+    longDescription: "Course project at NYU under Prof. Erin Grant as part of Probabilistic Time Series Analysis course, developing models to effectively forecast and impute MNAR time series data, particularly focusing on scenarios with structuredinformation blackouts.",
+    impact: "Observed improvement in imputation/forecasting accuracy over baseline methods",
+    technologies: ["Latent Dynamic Models", "Kalman Filters", "Variational Inference", "EM Algorithm", "Time Series Analysis"],
+    category: "Time Series Analysis",
+    link: "https://github.com/BlackoutBayes/Modeling-Information-Blackouts-in-MNAR-Time-Series",
+    status: "completed"
+  },
+  {
+    id: "3", 
     title: "Traffic Intersection VRU Analysis",
     description: "Deep learning pipeline for vulnerable road user trajectory extraction and safety analysis",
     longDescription: "Implemented YOLOv8 + Bot-SORT achieving 92.27% mAP@0.5 for VRU detection. Applied numerical safety models (TTC, PET) to identify high-risk zones.",
@@ -39,7 +50,7 @@ const projects: Project[] = [
     status: "completed"
   },
   {
-    id: "3",
+    id: "4",
     title: "ADAS Feature Engagement Prediction",
     description: "XGBoost model predicting autonomous driving system disengagement risk",
     longDescription: "Built predictive model using customer drive logs, map data, and weather conditions. Achieved ~80% ROC-AUC with SHAP analysis explaining 70% of disengagements.",
@@ -50,7 +61,7 @@ const projects: Project[] = [
     status: "completed"
   },
   {
-    id: "4",
+    id: "5",
     title: "Cross-Platform Multimodal Social Listening Pipeline for Customer Experience Insights",
     description: "Scalable system aggregating and analyzing customer feedback from diverse social media platforms",
     longDescription: "Engineered sentiment analysis and topic modeling pipeline using Azure OpenAI API, enabling real-time insights from Twitter, Instagram, Blog Post data.",
@@ -71,7 +82,7 @@ const projects: Project[] = [
   //   status: "completed"
   // },
   {
-    id: "5",
+    id: "6",
     title: "COVID-19 Traffic Impact Analysis",
     description: "Causal analysis of lockdown policies on urban traffic patterns in Chennai",
     longDescription: "Processed 2M+ Wi-Fi sensor records to model traffic behavior across pre-, mid-, and post-lockdown phases using advanced statistical methods.",
@@ -99,7 +110,8 @@ const ProjectShowcase = () => {
       "Machine Learning": "text-accent border-accent/30 bg-accent/10",
       "AI Systems": "text-internship border-internship/30 bg-internship/10",
       "Production ML": "text-work border-work/30 bg-work/10",
-      "Data Analysis": "text-muted-foreground border-muted/30 bg-muted/10"
+      "Data Analysis": "text-muted-foreground border-muted/30 bg-muted/10",
+      "Time Series Analysis": "text-current border-current/30 bg-current/10",
     };
     return colors[category as keyof typeof colors] || "text-muted-foreground border-muted/30 bg-muted/10";
   };

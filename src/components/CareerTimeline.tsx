@@ -22,9 +22,9 @@ const timelineEvents: TimelineEvent[] = [
     title: "Master of Science in Data Science",
     organization: "New York University",
     location: "New York, NY",
-    period: "Sept 2025 - May 2027",
-    description: "Advanced studies in Computer Vision, Deep Learning, and Time Series Analysis",
-    highlights: ["Reinforcement Learning", "Computer Vision Research", "Deep Learning from Small Data", "Probabilistic Time Series Analysis"],
+    period: "Sept 2025 - present",
+    description: "Advanced studies in Computer Vision, Deep Learning, and Reinforcement Learning",
+    highlights: ["GPA: 3.89/4.0", "Computer Vision Research", "Deep Learning", "Probabilistic Time Series Analysis", "Reinforcement Learning",],
     icon: Rocket,
     color: "current",
     type: "current"
@@ -32,11 +32,11 @@ const timelineEvents: TimelineEvent[] = [
   {
     id: "3",
     title: "Product Data Scientist",
-    organization: "Honda Motors",
+    organization: "Honda Motors .Co .Ltd",
     location: "Tochigi, Japan",
     period: "July 2022 - July 2025",
     description: "Led AI/ML projects for automotive ADAS and market research",
-    highlights: ["Applied AI/ML techniques", "Data Analysis", "Promoted to Product Owner", "Spearheaded team of 6 members", "N3 Japanese proficiency"],
+    highlights: ["Applied AI/ML engineering", "Market Research and Data Analysis", "Promoted to Product Owner", "Spearheaded team of 6 members", "N3 Japanese proficiency"],
     icon: Briefcase,
     color: "work",
     type: "work"

@@ -37,16 +37,16 @@ const Hero = () => {
               {/* Career Journey Tags */}
               <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-12 animate-fade-in animation-delay-500">
                 <div className="skill-pill bg-current/20 border-current/30 text-current">
-                  NYU • MS Data Science
+                  NYU • MS in Data Science
                 </div>
                 <div className="skill-pill bg-work/20 border-work/30 text-work">
-                  Honda Motors • Product DS
+                  Honda Motors • Product Data Scientist
                 </div>
                 <div className="skill-pill bg-internship/20 border-internship/30 text-internship">
-                  Data Science Intern
+                  Manifolds Labs • Data Science Intern
                 </div>
                 <div className="skill-pill bg-education/20 border-education/30 text-education">
-                  IIT Madras • Civil Engineering
+                  IIT Madras • BTech in Civil Engineering
                 </div>
               </div>
 
