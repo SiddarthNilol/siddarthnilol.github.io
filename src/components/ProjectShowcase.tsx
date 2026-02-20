@@ -40,6 +40,17 @@ const projects: Project[] = [
   },
   {
     id: "3", 
+    title: "Live ASL Video Translation System",
+    description: "Computer vision pipeline for real-time American Sign Language translation from video feed.",
+    longDescription: "Implemented VJEPA2 powered ASL recognition system achieving 85% accuracy on test set. Integrated with a Qwen2.5-based language model for contextual translation, enabling real-time ASL to English conversion.",
+    impact: "Enhanced accessibility for the deaf and hard-of-hearing community through real-time translation",
+    technologies: ["PyTorch", "VJEPA2", "Qwen2.5-3B", "Computer Vision", "GPU", "Dell Pro Max GB10"],
+    category: "Computer Vision",
+    link: "https://github.com/SiddarthNilol/ASLVideoTranslate",
+    status: "completed"
+  },
+  {
+    id: "4", 
     title: "Traffic Intersection VRU Analysis",
     description: "Deep learning pipeline for vulnerable road user trajectory extraction and safety analysis",
     longDescription: "Implemented YOLOv8 + Bot-SORT achieving 92.27% mAP@0.5 for VRU detection. Applied numerical safety models (TTC, PET) to identify high-risk zones.",
@@ -50,7 +61,7 @@ const projects: Project[] = [
     status: "completed"
   },
   {
-    id: "4",
+    id: "5",
     title: "ADAS Feature Engagement Prediction",
     description: "XGBoost model predicting autonomous driving system disengagement risk",
     longDescription: "Built predictive model using customer drive logs, map data, and weather conditions. Achieved ~80% ROC-AUC with SHAP analysis explaining 70% of disengagements.",
@@ -61,7 +72,7 @@ const projects: Project[] = [
     status: "completed"
   },
   {
-    id: "5",
+    id: "6",
     title: "Cross-Platform Multimodal Social Listening Pipeline for Customer Experience Insights",
     description: "Scalable system aggregating and analyzing customer feedback from diverse social media platforms",
     longDescription: "Engineered sentiment analysis and topic modeling pipeline using Azure OpenAI API, enabling real-time insights from Twitter, Instagram, Blog Post data.",
@@ -82,7 +93,7 @@ const projects: Project[] = [
   //   status: "completed"
   // },
   {
-    id: "6",
+    id: "7",
     title: "COVID-19 Traffic Impact Analysis",
     description: "Causal analysis of lockdown policies on urban traffic patterns in Chennai",
     longDescription: "Processed 2M+ Wi-Fi sensor records to model traffic behavior across pre-, mid-, and post-lockdown phases using advanced statistical methods.",
