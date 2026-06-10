@@ -87,10 +87,19 @@ api/
 └── api-server.js       # Local API server for development
 ```
 
+## Visitor Map Storage
+
+The `/api/visitors` function never writes to the deployment directory (read-only on Vercel). It picks a storage backend automatically:
+
+1. **Redis (durable)** — if `KV_REST_API_URL`/`KV_REST_API_TOKEN` (Vercel KV / Upstash for Redis from the Vercel Marketplace) or `UPSTASH_REDIS_REST_URL`/`UPSTASH_REDIS_REST_TOKEN` env vars are set, visits persist across deploys.
+2. **`/tmp` fallback** — works without any setup, but data resets on cold starts and redeploys.
+
+To make visitor data permanent: Vercel Dashboard → Storage → Create → Upstash for Redis (free tier), connect it to the project, and redeploy. No code changes needed.
+
 ## API Endpoints
 
 ### GET /api/visitors
-Returns an array of the last 100 visitor records with geolocation data.
+Returns an array of the most recent visitor records with geolocation data.
 
 ### POST /api/visitors
 Accepts visitor data in JSON format:

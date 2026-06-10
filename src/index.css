@@ -2,103 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Modern Personal Portfolio Design System */
+/* ============================================
+   "Signal" design system — observatory dark
+   Ink-indigo canvas / violet→cyan aurora
+   Space Grotesk display · Inter body · JetBrains Mono data
+   ============================================ */
 
 @layer base {
   :root {
-    /* Core Colors - Deep tech aesthetic */
-    --background: 220 15% 5%;
-    --foreground: 210 40% 98%;
+    /* Core canvas */
+    --background: 246 30% 5%;
+    --foreground: 230 30% 94%;
 
-    --card: 220 14% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 245 26% 8%;
+    --card-foreground: 230 30% 94%;
 
-    --popover: 220 14% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 245 26% 8%;
+    --popover-foreground: 230 30% 94%;
 
-    /* Primary - Tech Blue */
-    --primary: 210 100% 60%;
-    --primary-foreground: 220 15% 5%;
-    --primary-glow: 210 100% 70%;
+    /* Primary — electric violet */
+    --primary: 258 90% 68%;
+    --primary-foreground: 246 30% 5%;
+    --primary-glow: 258 90% 76%;
 
-    /* Secondary - Sophisticated Gray */
-    --secondary: 220 14% 12%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 245 22% 12%;
+    --secondary-foreground: 230 30% 94%;
 
-    --muted: 220 14% 15%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 245 20% 14%;
+    --muted-foreground: 235 16% 64%;
 
-    /* Accent - Vibrant Green */
-    --accent: 142 76% 50%;
-    --accent-foreground: 220 15% 5%;
-    --accent-glow: 142 76% 60%;
+    /* Accent — signal cyan */
+    --accent: 185 95% 55%;
+    --accent-foreground: 246 30% 5%;
+    --accent-glow: 185 95% 65%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 230 30% 94%;
 
-    --border: 220 14% 15%;
-    --input: 220 14% 12%;
-    --ring: 210 100% 60%;
+    --border: 245 20% 16%;
+    --input: 245 20% 13%;
+    --ring: 258 90% 68%;
 
-    /* Career Timeline Colors */
-    --education: 250 100% 70%;
-    --internship: 200 100% 65%;
-    --work: 142 76% 50%;
-    --current: 210 100% 60%;
+    /* Career timeline hues */
+    --education: 280 85% 70%;
+    --internship: 185 95% 55%;
+    --work: 150 80% 55%;
+    --current: 258 90% 68%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--secondary)));
-    --gradient-timeline: linear-gradient(90deg, hsl(var(--education)), hsl(var(--internship)), hsl(var(--work)), hsl(var(--current)));
+    --gradient-hero: linear-gradient(120deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-card: linear-gradient(160deg, hsl(245 26% 9%), hsl(245 24% 7%));
+    --gradient-timeline: linear-gradient(180deg, hsl(var(--education)), hsl(var(--internship)), hsl(var(--work)), hsl(var(--current)));
 
-    /* Shadows & Effects */
-    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
-    --shadow-card: 0 10px 30px -10px hsl(220 14% 5% / 0.5);
-    --shadow-accent: 0 0 30px hsl(var(--accent) / 0.4);
+    /* Shadows & effects */
+    --shadow-glow: 0 0 44px hsl(var(--primary) / 0.28);
+    --shadow-card: 0 18px 44px -18px hsl(246 40% 2% / 0.9);
+    --shadow-accent: 0 0 30px hsl(var(--accent) / 0.3);
 
-    /* Animation Timings */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  /* Light mode variant (optional) */
-  .light {
-    --background: 210 40% 98%;
-    --foreground: 220 15% 10%;
-    --card: 0 0% 100%;
-    --card-foreground: 220 15% 10%;
-    --primary: 210 100% 50%;
-    --secondary: 210 40% 95%;
-    --muted: 210 40% 92%;
-    --accent: 142 76% 40%;
-    --border: 214 31% 85%;
-    --input: 214 31% 85%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 245 26% 8%;
+    --sidebar-foreground: 230 30% 94%;
+    --sidebar-primary: 258 90% 68%;
+    --sidebar-primary-foreground: 246 30% 5%;
+    --sidebar-accent: 245 22% 12%;
+    --sidebar-accent-foreground: 230 30% 94%;
+    --sidebar-border: 245 20% 16%;
+    --sidebar-ring: 258 90% 68%;
   }
 }
 
@@ -108,17 +81,95 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans overflow-x-hidden;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    @apply bg-background text-foreground font-sans overflow-x-hidden antialiased;
   }
 
   html {
     scroll-behavior: smooth;
   }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.35);
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
 }
 
 @layer components {
-  /* Career Timeline Component */
+  /* Blueprint grid canvas behind sections */
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.45) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.45) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 100%);
+  }
+
+  /* Aurora glow blobs */
+  .aurora {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    pointer-events: none;
+  }
+
+  /* Monospace section eyebrow: // 01 — TRAJECTORY */
+  .eyebrow {
+    @apply font-mono text-xs md:text-sm tracking-[0.25em] uppercase text-accent;
+  }
+
+  /* Section heading block */
+  .section-title {
+    @apply text-3xl md:text-5xl font-bold mt-3 mb-4;
+  }
+
+  /* Cards with gradient hairline border */
+  .signal-card {
+    @apply relative rounded-xl p-6;
+    background:
+      var(--gradient-card) padding-box,
+      linear-gradient(160deg, hsl(var(--border)), hsl(var(--border) / 0.2)) border-box;
+    border: 1px solid transparent;
+    transition: var(--transition-smooth);
+  }
+
+  .signal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+    background:
+      var(--gradient-card) padding-box,
+      linear-gradient(160deg, hsl(var(--primary) / 0.6), hsl(var(--accent) / 0.4)) border-box;
+  }
+
+  /* Back-compat alias used by shadcn Card consumers */
+  .project-card {
+    @apply signal-card;
+  }
+
+  /* Skill / tech pills */
+  .skill-pill {
+    @apply px-3 py-1.5 rounded-full text-xs font-mono;
+    background: hsl(var(--secondary) / 0.8);
+    border: 1px solid hsl(var(--border));
+    color: hsl(var(--muted-foreground));
+    transition: var(--transition-smooth);
+  }
+
+  .skill-pill:hover {
+    color: hsl(var(--accent));
+    border-color: hsl(var(--accent) / 0.5);
+    transform: translateY(-2px);
+  }
+
+  /* Timeline */
+  .timeline-line {
+    background: var(--gradient-timeline);
+    box-shadow: 0 0 18px hsl(var(--primary) / 0.45);
+  }
+
   .timeline-dot {
     @apply w-4 h-4 rounded-full border-2 border-primary bg-background relative z-10;
     box-shadow: var(--shadow-glow);
@@ -127,71 +178,36 @@
 
   .timeline-dot.active {
     @apply bg-primary scale-125;
-    animation: pulse 2s infinite;
   }
 
-  .timeline-line {
-    @apply absolute left-1/2 transform -translate-x-1/2 w-1;
-    background: var(--gradient-timeline);
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  /* Glass sticky nav */
+  .glass-nav {
+    background: hsl(var(--background) / 0.7);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid hsl(var(--border) / 0.6);
   }
 
-  /* Skill Pills */
-  .skill-pill {
-    @apply px-4 py-2 rounded-full text-sm font-medium;
-    background: var(--gradient-card);
-    border: 1px solid hsl(var(--border));
-    transition: var(--transition-smooth);
+  /* Hero radial wash */
+  .hero-bg {
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 20%, hsl(var(--primary) / 0.14) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 20% 80%, hsl(var(--accent) / 0.1) 0%, transparent 70%);
   }
 
-  .skill-pill:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-accent);
-    border-color: hsl(var(--accent));
-  }
-
-  /* Project Cards */
-  .project-card {
-    @apply relative overflow-hidden rounded-xl p-6;
-    background: var(--gradient-card);
-    border: 1px solid hsl(var(--border));
-    transition: var(--transition-smooth);
-  }
-
-  .project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-card);
-    border-color: hsl(var(--primary) / 0.5);
-  }
-
-  .project-card::before {
-    content: '';
-    @apply absolute inset-0 opacity-0;
-    background: var(--gradient-hero);
-    transition: var(--transition-smooth);
-  }
-
-  .project-card:hover::before {
-    @apply opacity-10;
-  }
-
-  /* Floating Animation */
   .float {
-    animation: float 6s ease-in-out infinite;
+    animation: float 7s ease-in-out infinite;
   }
 
   .float-delayed {
-    animation: float 6s ease-in-out infinite 2s;
+    animation: float 7s ease-in-out infinite 2.5s;
   }
 
-  /* Hero Section */
-  .hero-bg {
-    background: radial-gradient(ellipse at center, hsl(var(--primary) / 0.15) 0%, transparent 70%);
-  }
-
-  /* Glowing Text Effect */
-  .glow-text {
-    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+  /* Visitor map marker pulse */
+  .marker-pulse {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: marker-pulse 2.4s ease-out infinite;
   }
 }
 
@@ -202,14 +218,18 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  .animation-delay-300 { animation-delay: 0.3s; animation-fill-mode: both; }
+  .animation-delay-500 { animation-delay: 0.5s; animation-fill-mode: both; }
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  50% { transform: translateY(-18px); }
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+@keyframes marker-pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  70% { transform: scale(3.2); opacity: 0; }
+  100% { transform: scale(3.2); opacity: 0; }
 }
